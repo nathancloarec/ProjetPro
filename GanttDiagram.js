@@ -39,7 +39,7 @@ const GanttDiagram = ({ data, setTasks, updateTask }) => {
 
     return {
       id: task.id,
-      text: `${task.nom} (${task.startTime} - ${task.endTime})`,  // Affiche le nom et les heures
+      text: task.text || `${task.nom} (${task.startTime} - ${task.endTime})`,  // Affiche le nom et les heures
       start_date: visibleStart,
       duration: duration,
       progress: task.progress || 0.4,
@@ -122,7 +122,6 @@ const GanttDiagram = ({ data, setTasks, updateTask }) => {
               fin: newFin,
               text: ganttTask.text, // Assure-toi que le texte est bien récupéré ici
             };
-    
             // Appelle updateTask pour mettre à jour la tâche
             updateTask(updatedTask);
             return updatedTask;
